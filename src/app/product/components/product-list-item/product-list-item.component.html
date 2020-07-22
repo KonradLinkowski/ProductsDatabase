@@ -1,0 +1,6 @@
+<div class="product">
+  <img class="product__thumbnail" [src]="product?.thumbnail || 'https://via.placeholder.com/150'">
+  <span class="product__name">{{ product?.name }}</span>
+  <p class="product__description">{{ product?.description }}</p>
+  <span class="product__price app-center">${{ product?.price | number: '1.2-2' }}</span>
+</div>

@@ -1,0 +1,31 @@
+$thumbnail-size: 100px;
+
+.product {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: $thumbnail-size auto 100px;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "thumbnail name price"
+    "thumbnail description price";
+
+  gap: 10px;
+
+  &__name {
+    grid-area: name;
+  }
+
+  &__thumbnail {
+    grid-area: thumbnail;
+    width: $thumbnail-size;
+    height: $thumbnail-size;
+  }
+
+  &__price {
+    grid-area: price;
+  }
+
+  &__description {
+    grid-area: description;
+  }
+}
