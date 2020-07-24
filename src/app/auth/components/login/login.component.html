@@ -1,0 +1,13 @@
+<div class="app-center">
+  <form class="login-form" [formGroup]="form" (submit)="submit()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username" autocomplete="on">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" autocomplete="on">
+    </mat-form-field>
+    <button matButton>Login</button>
+  </form>
+</div>
