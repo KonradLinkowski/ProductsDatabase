@@ -3,11 +3,11 @@ $thumbnail-size: 100px;
 .product {
   margin: 10px;
   display: grid;
-  grid-template-columns: $thumbnail-size auto 100px;
+  grid-template-columns: $thumbnail-size auto 100px 100px;
   grid-template-rows: auto auto;
   grid-template-areas:
-    "thumbnail name price"
-    "thumbnail description price";
+    "thumbnail name edit price"
+    "thumbnail description edit price";
 
   gap: 10px;
 
@@ -27,5 +27,9 @@ $thumbnail-size: 100px;
 
   &__description {
     grid-area: description;
+  }
+
+  &__edit {
+    grid-area: edit;
   }
 }

@@ -3,4 +3,5 @@
   <span class="product__name">{{ product?.name }}</span>
   <p class="product__description">{{ product?.description }}</p>
   <span class="product__price app-center">${{ product?.price | number: '1.2-2' }}</span>
+  <a *ngIf="!readonly" class="product__edit app-center" [routerLink]="['/edit-product', product.id]">Edit</a>
 </div>

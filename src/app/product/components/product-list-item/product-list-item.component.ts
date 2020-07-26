@@ -8,4 +8,5 @@ import { Product } from '../../models/product.model';
 })
 export class ProductListItemComponent {
   @Input() product: Product;
+  @Input() readonly = true;
 }
