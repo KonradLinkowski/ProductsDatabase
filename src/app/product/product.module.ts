@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 import { ProductService } from './services/product/product.service';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,8 +13,8 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    ProductListComponent,
-    ProductListItemComponent,
+    ProductsListComponent,
+    ProductsListItemComponent,
     EditProductComponent
   ],
   imports: [
@@ -30,12 +30,12 @@ import { RouterModule } from '@angular/router';
     ProductService
   ],
   entryComponents: [
-    ProductListComponent,
+    ProductsListComponent,
     EditProductComponent
   ],
   exports: [
-    ProductListComponent,
-    ProductListItemComponent
+    ProductsListComponent,
+    ProductsListItemComponent
   ]
 })
 export class ProductModule { }

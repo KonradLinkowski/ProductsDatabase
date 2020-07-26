@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductListComponent } from './product-list.component';
-import { ProductListItemComponent } from '../product-list-item/product-list-item.component';
+import { ProductsListComponent } from './products-list.component';
+import { ProductsListItemComponent } from '../products-list-item/products-list-item.component';
 import { ProductService } from '../../services/product/product.service';
 import { products } from '../../services/product/products.mock';
 import { of } from 'rxjs';
 
-describe('ProductListComponent', () => {
-  let component: ProductListComponent;
-  let fixture: ComponentFixture<ProductListComponent>;
+describe('ProductsListComponent', () => {
+  let component: ProductsListComponent;
+  let fixture: ComponentFixture<ProductsListComponent>;
 
   beforeEach(async(() => {
     const productService: Partial<ProductService> = {
@@ -18,7 +18,7 @@ describe('ProductListComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ ProductListComponent, ProductListItemComponent ],
+      declarations: [ ProductsListComponent, ProductsListItemComponent ],
       providers: [
         { provide: ProductService, useValue: productService }
       ]
@@ -27,7 +27,7 @@ describe('ProductListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductListComponent);
+    fixture = TestBed.createComponent(ProductsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

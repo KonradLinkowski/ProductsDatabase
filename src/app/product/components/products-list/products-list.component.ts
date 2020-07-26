@@ -3,11 +3,11 @@ import { ProductService } from '../../services/product/product.service';
 import { Product } from '../../models/product.model';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductsListComponent implements OnInit {
   @Input() readonly = true;
   products: Product[];
 
