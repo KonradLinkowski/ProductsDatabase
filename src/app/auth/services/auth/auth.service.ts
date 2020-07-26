@@ -3,11 +3,12 @@ import { Observable, of, BehaviorSubject, empty, EMPTY } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../../models/user.model';
 import { user as userMock } from './user.mock';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-  constructor() {
+  constructor(private router: Router) {
     this.loadUser();
   }
 
@@ -24,8 +25,12 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    this.currentUser.next(null);
-    return EMPTY;
+    return of(null).pipe(
+      tap(() => {
+        this.currentUser.next(null);
+        this.router.navigate(['/']);
+      })
+    );
   }
 
   isAuthenticated() {
