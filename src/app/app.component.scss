@@ -4,6 +4,11 @@
 
   &__title {
     margin-right: auto;
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 
   &__admin {
