@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../../services/product/product.service';
 import { Product } from '../../models/product.model';
 
@@ -8,6 +8,7 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+  @Input() readonly = true;
   products: Product[];
 
   constructor(private productService: ProductService) {}
