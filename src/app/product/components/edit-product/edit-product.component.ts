@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/product/models/product.model';
 import { ProductService } from 'src/app/product/services/product/product.service';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
-import { products } from '../../services/product/products.mock';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { getError } from 'src/app/helpers';
 
 @Component({
   selector: 'app-edit-product',
@@ -14,6 +14,7 @@ export class EditProductComponent implements OnInit {
   product: Product;
   form: FormGroup;
   loaded = false;
+  getError = getError;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,10 +40,10 @@ export class EditProductComponent implements OnInit {
   initForm(product: Partial<Product> = {}) {
     const variants = product.variants ? product.variants.map(v => this.createVariant(v.name, v.price)) : [];
     this.form = new FormGroup({
-      name: new FormControl(product.name),
-      description: new FormControl(product.description),
+      name: new FormControl(product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      description: new FormControl(product.description, [Validators.maxLength(256)]),
       thumbnail: new FormControl(product.thumbnail),
-      variants: new FormArray(variants)
+      variants: new FormArray(variants, [Validators.required])
     });
   }
 
@@ -56,8 +57,8 @@ export class EditProductComponent implements OnInit {
 
   createVariant(name: string = null, price: number = null): FormGroup {
     return new FormGroup({
-      name: new FormControl(name),
-      price: new FormControl(price)
+      name: new FormControl(name, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      price: new FormControl(price, [Validators.required, Validators.min(0)])
     });
   }
 

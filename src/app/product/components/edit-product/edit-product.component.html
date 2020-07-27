@@ -1,29 +1,51 @@
-<form [formGroup]="form" *ngIf="loaded">
+<form [formGroup]="form" *ngIf="loaded" class="product-form">
+  <h2 *ngIf="!product">Add a new product</h2>
+  <h2 *ngIf="product">Edit a product</h2>
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput type="text" formControlName="name">
+    <input matInput type="text" formControlName="name" />
+    <mat-error>{{ getError("name") }}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Description</mat-label>
-    <input matInput type="text" formControlName="description">
+    <input matInput type="text" formControlName="description" />
+    <mat-error>{{ getError("description") }}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Thumbnail</mat-label>
-    <input matInput type="text" formControlName="thumbnail">
+    <input matInput type="text" formControlName="thumbnail" />
+    <mat-error>{{ getError("thumbnail") }}</mat-error>
   </mat-form-field>
-  <div formArrayName="variants">
-    <div *ngFor="let variant of variants.controls; let i = index" [formGroupName]="i">
-      <mat-form-field>
+  <fieldset class="product-form__variants" formArrayName="variants">
+    <legend>Variants</legend>
+    <div
+      class="product-form__variant"
+      *ngFor="let variant of variants.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <mat-form-field class="product-form__variant-name">
         <mat-label>Name</mat-label>
-        <input matInput type="text" formControlName="name">
+        <input matInput type="text" formControlName="name" />
+        <mat-error>{{ getError("variants." + i + ".name") }}</mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="product-form__variant-price">
         <mat-label>Price</mat-label>
-        <input matInput appNumberInput formControlName="price">
+        <input matInput appNumberInput formControlName="price" />
+        <mat-error>{{ getError("variants." + i + ".price") }}</mat-error>
       </mat-form-field>
-      <button mat-button (click)="removeVariant(i)">Remove</button>
+      <button mat-icon-button (click)="removeVariant(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </div>
-    <button mat-button (click)="addVariant()">Add</button>
-  </div>
-  <button (click)="submit()" mat-flat-button color="primary">Apply</button>
+    <button mat-flat-button (click)="addVariant()">Add a new variant</button>
+  </fieldset>
+  <button
+    class="product-form__apply"
+    (click)="submit()"
+    mat-flat-button
+    color="primary"
+    [disabled]="form.invalid"
+  >
+    Apply
+  </button>
 </form>
