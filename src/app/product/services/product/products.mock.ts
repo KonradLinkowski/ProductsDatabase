@@ -3,23 +3,32 @@ import { Product } from '../../models/product.model';
 export const products: Product[] = [
   {
     id: '0',
-    price: 2.30,
     name: 'Potato',
     description: 'Cool looking vegetable',
-    thumbnail: ''
+    thumbnail: '',
+    variants: [{
+      name: 'Yellow',
+      price: 2.30
+    }]
   },
   {
     id: '1',
-    price: 10.99,
     name: 'Eggplant',
     description: 'Plant with egg fruits',
     thumbnail: '',
+    variants: [{
+      name: 'Purple',
+      price: 5.61
+    }]
   },
   {
     id: '2',
-    price: 0.99,
     name: 'Tomato',
     description: 'Round, red fruit',
-    thumbnail: ''
+    thumbnail: '',
+    variants: [{
+      name: 'Red',
+      price: 0.30
+    }]
   }
 ];
