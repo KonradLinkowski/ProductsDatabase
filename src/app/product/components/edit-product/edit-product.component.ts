@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/product/models/product.model';
 import { ProductService } from 'src/app/product/services/product/product.service';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { products } from '../../services/product/products.mock';
 
 @Component({
   selector: 'app-edit-product',
@@ -12,6 +13,7 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 export class EditProductComponent implements OnInit {
   product: Product;
   form: FormGroup;
+  loaded = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,17 +24,25 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (!params.productId) {
-        return this.goToAdminPage();
+        this.initForm();
+        this.loaded = true;
+        return;
       }
-      return this.productService.getProduct(params.productId).subscribe(product => {
+      this.productService.getProduct(params.productId).subscribe(product => {
         this.product = product;
-        this.form = new FormGroup({
-          name: new FormControl(product.name),
-          description: new FormControl(product.description),
-          thumbnail: new FormControl(product.thumbnail),
-          variants: new FormArray(product.variants.map(v => this.createVariant(v.name, v.price)))
-        });
+        this.initForm(product);
+        this.loaded = true;
       });
+    });
+  }
+
+  initForm(product: Partial<Product> = {}) {
+    const variants = product.variants ? product.variants.map(v => this.createVariant(v.name, v.price)) : [];
+    this.form = new FormGroup({
+      name: new FormControl(product.name),
+      description: new FormControl(product.description),
+      thumbnail: new FormControl(product.thumbnail),
+      variants: new FormArray(variants)
     });
   }
 
@@ -56,10 +66,12 @@ export class EditProductComponent implements OnInit {
   }
 
   submit() {
-    this.productService.updateProduct(this.product.id, this.form.value);
-  }
-
-  private goToAdminPage(): void {
-    this.router.navigate(['admin']);
+    if (this.product) {
+      this.productService.updateProduct(this.product.id, this.form.value).subscribe();
+    } else {
+      this.productService.createProduct(this.form.value).subscribe(id => {
+        this.router.navigate(['/edit-product', id]);
+      });
+    }
   }
 }

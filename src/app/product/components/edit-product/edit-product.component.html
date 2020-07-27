@@ -1,4 +1,4 @@
-<form [formGroup]="form" *ngIf="product">
+<form [formGroup]="form" *ngIf="loaded">
   <mat-form-field>
     <mat-label>Name</mat-label>
     <input matInput type="text" formControlName="name">

@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: '', component: ProductsPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
+  { path: 'add-product', component: EditProductComponent, canActivate: [AdminGuard] },
   { path: 'edit-product/:productId', component: EditProductComponent, canActivate: [AdminGuard] }
 ];
 

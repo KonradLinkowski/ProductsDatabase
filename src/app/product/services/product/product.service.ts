@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable, from, defer } from 'rxjs';
 import { Product } from '../../models/product.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
@@ -22,7 +22,10 @@ export class ProductService {
   }
 
   updateProduct(id: string, product: Partial<Product>) {
-    const promise = this.firestore.collection(this.collectionName).doc<Product>(id).update(product);
-    return from(promise);
+    return defer(() => from(this.firestore.collection(this.collectionName).doc<Product>(id).update(product)));
+  }
+
+  createProduct(product: Partial<Product>): Observable<string> {
+    return defer(() => from(this.firestore.collection(this.collectionName).add(product)).pipe(map(ref => ref.id)));
   }
 }
