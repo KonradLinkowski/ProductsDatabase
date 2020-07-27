@@ -9,7 +9,7 @@ import { AuthService } from './auth/services/auth/auth.service';
 })
 export class AppComponent {
 
-  constructor(private router: Router, protected authService: AuthService) {}
+  constructor(private router: Router, public authService: AuthService) {}
 
   goToLogin() {
     this.router.navigate(['/login']);
