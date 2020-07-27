@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "productdatabase-2a003": {
+      "hosting": {
+        "ProductsDatabase": [
+          "productdatabase-2a003"
+        ]
+      }
+    }
+  }
+}
