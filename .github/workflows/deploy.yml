@@ -12,7 +12,7 @@ jobs:
           persist-credentials: false
       - uses: actions/checkout@v2
       - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: yarn deploy
       - uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
