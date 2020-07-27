@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" *ngIf="product">
   <mat-form-field>
     <mat-label>Name</mat-label>
     <input matInput type="text" formControlName="name">
@@ -8,12 +8,22 @@
     <input matInput type="text" formControlName="description">
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Price</mat-label>
-    <input matInput appNumberInput formControlName="price">
-  </mat-form-field>
-  <mat-form-field>
     <mat-label>Thumbnail</mat-label>
     <input matInput type="text" formControlName="thumbnail">
   </mat-form-field>
-  <button (click)="submit()" mat-button>Apply</button>
+  <div formArrayName="variants">
+    <div *ngFor="let variant of variants.controls; let i = index" [formGroupName]="i">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput appNumberInput formControlName="price">
+      </mat-form-field>
+      <button mat-button (click)="removeVariant(i)">Remove</button>
+    </div>
+    <button mat-button (click)="addVariant()">Add</button>
+  </div>
+  <button (click)="submit()" mat-flat-button color="primary">Apply</button>
 </form>

@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { products } from './products.mock';
+import { Observable } from 'rxjs';
 import { Product } from '../../models/product.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class ProductService {
+  private collectionName = 'products';
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) { }
 
   getProducts(): Observable<Product[]> {
-    return of(products);
+    return this.firestore.collection<Product>(this.collectionName).valueChanges({ idField: 'id' });
   }
 
   getProduct(id: string): Observable<Product> {
-    const product = products.find(p => p.id === id);
-    return of(product);
+    return this.firestore.collection(this.collectionName).doc<Product>(id).valueChanges();
   }
 }

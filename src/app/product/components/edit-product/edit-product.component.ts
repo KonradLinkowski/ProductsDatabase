@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/product/models/product.model';
 import { ProductService } from 'src/app/product/services/product/product.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-product',
@@ -24,24 +24,39 @@ export class EditProductComponent implements OnInit {
       if (!params.productId) {
         return this.goToAdminPage();
       }
-      this.getProduct(params.productId);
-      this.form = new FormGroup({
-        name: new FormControl(this.product.name),
-        description: new FormControl(this.product.description),
-        price: new FormControl(this.product.price),
-        thumbnail: new FormControl(this.product.thumbnail),
+      return this.productService.getProduct(params.productId).subscribe(product => {
+        this.product = product;
+        this.form = new FormGroup({
+          name: new FormControl(product.name),
+          description: new FormControl(product.description),
+          thumbnail: new FormControl(product.thumbnail),
+          variants: new FormArray(product.variants.map(v => this.createVariant(v.name, v.price)))
+        });
       });
     });
   }
 
-  submit() {
-    alert(JSON.stringify(this.form.value));
+  addVariant() {
+    this.variants.push(this.createVariant());
   }
 
-  private getProduct(id: string) {
-    this.productService.getProduct(id).subscribe(product => {
-      this.product = product;
+  removeVariant(index: number) {
+    this.variants.removeAt(index);
+  }
+
+  createVariant(name: string = null, price: number = null): FormGroup {
+    return new FormGroup({
+      name: new FormControl(name),
+      price: new FormControl(price)
     });
+  }
+
+  get variants(): FormArray {
+    return this.form.get('variants') as FormArray;
+  }
+
+  submit() {
+    alert(JSON.stringify(this.form.value));
   }
 
   private goToAdminPage(): void {
