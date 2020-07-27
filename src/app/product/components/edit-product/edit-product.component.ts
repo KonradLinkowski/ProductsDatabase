@@ -56,7 +56,7 @@ export class EditProductComponent implements OnInit {
   }
 
   submit() {
-    alert(JSON.stringify(this.form.value));
+    this.productService.updateProduct(this.product.id, this.form.value);
   }
 
   private goToAdminPage(): void {
