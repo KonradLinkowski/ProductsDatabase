@@ -2,11 +2,11 @@
   <a [routerLink]="['/']" class="navbar__title">
     <h1>Product Database</h1>
   </a>
-  <a *ngIf="authService.isAuthenticated()" [routerLink]="['/admin']" class="navbar__admin">
+  <a *ngIf="isLoggedIn" [routerLink]="['/admin']" class="navbar__admin">
     <span>Admin page</span>
   </a>
   <button
-    *ngIf="!authService.isAuthenticated()"
+    *ngIf="!isLoggedIn"
     mat-flat-button
     class="navbar__login"
     aria-label="Example icon-button with share icon"
@@ -16,7 +16,7 @@
     <span>Login</span>
   </button>
   <button
-    *ngIf="authService.isAuthenticated()"
+    *ngIf="isLoggedIn"
     mat-flat-button
     class="navbar__login"
     aria-label="Example icon-button with share icon"

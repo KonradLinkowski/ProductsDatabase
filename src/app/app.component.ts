@@ -8,8 +8,13 @@ import { AuthService } from './auth/services/auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  isLoggedIn = false;
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(private router: Router, public authService: AuthService) {
+    this.authService.isAuthenticated().subscribe(data => {
+      this.isLoggedIn = !!data;
+    });
+  }
 
   goToLogin() {
     this.router.navigate(['/login']);

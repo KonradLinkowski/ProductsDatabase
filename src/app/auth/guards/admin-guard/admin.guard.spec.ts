@@ -1,11 +1,12 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { AdminGuard } from './admin.guard';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 const authService: Partial<AuthService> = {
-  isAuthenticated: () => true
+  isAuthenticated: () => of(true)
 };
 
 const router: Partial<Router> = {
