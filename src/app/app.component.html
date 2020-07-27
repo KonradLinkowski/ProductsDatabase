@@ -2,28 +2,77 @@
   <a [routerLink]="['/']" class="navbar__title">
     <h1>Product Database</h1>
   </a>
-  <a *ngIf="isLoggedIn" [routerLink]="['/admin']" class="navbar__admin">
-    <span>Admin page</span>
-  </a>
-  <button
-    *ngIf="!isLoggedIn"
-    mat-flat-button
-    class="navbar__login"
-    aria-label="Example icon-button with share icon"
-    (click)="goToLogin()"
-  >
-    <mat-icon>account_circle</mat-icon>
-    <span>Login</span>
-  </button>
-  <button
-    *ngIf="isLoggedIn"
-    mat-flat-button
-    class="navbar__login"
-    aria-label="Example icon-button with share icon"
-    (click)="logout()"
-  >
-    <mat-icon>exit_to_app</mat-icon>
-    <span>Logout</span>
-  </button>
+  <ng-container *ngIf="mobileLayout">
+    <button
+      class="navbar__admin"
+      *ngIf="isLoggedIn"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="More options"
+    >
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button
+      *ngIf="!isLoggedIn"
+      mat-icon-button
+      class="navbar__login"
+      aria-label="Example icon-button with share icon"
+      (click)="goToLogin()"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button
+      *ngIf="isLoggedIn"
+      mat-icon-button
+      class="navbar__login"
+      aria-label="Example icon-button with share icon"
+      (click)="logout()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="!mobileLayout">
+    <button
+      class="navbar__admin"
+      *ngIf="isLoggedIn"
+      mat-button
+      [matMenuTriggerFor]="menu"
+      aria-label="More options"
+    >
+      <mat-icon>settings</mat-icon>
+      <span>Admin tools</span>
+    </button>
+    <button
+      *ngIf="!isLoggedIn"
+      mat-flat-button
+      class="navbar__login"
+      aria-label="Example icon-button with share icon"
+      (click)="goToLogin()"
+    >
+      <mat-icon>account_circle</mat-icon>
+      <span>Login</span>
+    </button>
+    <button
+      *ngIf="isLoggedIn"
+      mat-flat-button
+      class="navbar__login"
+      aria-label="Example icon-button with share icon"
+      (click)="logout()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </ng-container>
+
+  <mat-menu #menu="matMenu" xPosition="before">
+    <a [routerLink]="['/admin']" mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Edit products</span>
+    </a>
+    <a [routerLink]="['/add-product']" mat-menu-item>
+      <mat-icon>add</mat-icon>
+      <span>Add product</span>
+    </a>
+  </mat-menu>
 </mat-toolbar>
 <router-outlet></router-outlet>

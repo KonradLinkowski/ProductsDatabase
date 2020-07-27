@@ -13,24 +13,15 @@
 
   &__admin {
     margin-left: 10px;
-    margin-right: 30px;
-    font-size: 1rem;
+    margin-right: 10px;
+    .mat-icon {
+      margin-right: 10px;
+    }
   }
   
-    &__login {
-      .mat-icon {
-        margin-right: 10px;
-        
-      }
-    }
-
-  @media (max-width: 500px) {
-    &__title {
-      font-size: 1rem;
-    }
-
-    &__admin {
-      font-size: 0.8rem;
+  &__login {
+    .mat-icon {
+      margin-right: 10px;
     }
   }
 }
