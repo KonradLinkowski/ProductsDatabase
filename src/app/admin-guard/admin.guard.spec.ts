@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AdminGuard } from './admin.guard';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../auth/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 
