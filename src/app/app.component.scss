@@ -12,9 +12,13 @@
   }
 
   &__admin {
-    margin-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    .mat-icon {
+      margin-right: 10px;
+    }
   }
-
+  
   &__login {
     .mat-icon {
       margin-right: 10px;

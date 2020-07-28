@@ -73,6 +73,6 @@ export class ProductsListComponent implements OnInit {
 
     this.filteredProducts = this.allProducts.filter(product =>
       filterFunction.call(this.keywords, keyword =>
-        product.name.toLowerCase().match(keyword) || product.name.toLowerCase().match(keyword)));
+        product.name.toLowerCase().match(keyword) || product.description.toLowerCase().match(keyword)));
   }
 }

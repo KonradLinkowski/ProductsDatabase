@@ -1,0 +1,32 @@
+.product-form {
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__variant {
+    display: flex;
+    align-items: center;
+    .mat-button {
+      margin-top: 10px;
+    }
+  }
+
+  &__variant-name {
+    flex: 1;
+  }
+
+  &__variant-price {
+    max-width: 60px;
+  }
+
+  &__apply {
+    display: block;
+    margin-left: auto;
+    margin-top: 10px;
+  }
+}

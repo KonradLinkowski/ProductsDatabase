@@ -1,8 +1,12 @@
 export function getError(path: string | (string | number)[]): string {
-  const { errors } = this.form.get(path);
+  const field = this.form.get(path);
 
-  if (errors) {
-    const [err, data] = Object.entries(errors)[0] as [string, any];
+  if (!field) {
+    throw new Error(`Form field with given path doesn't exist. Path: ${path}`);
+  }
+
+  if (field.errors) {
+    const [err, data] = Object.entries(field.errors)[0] as [string, any];
     const messages = {
       email: 'Invalid email format',
       required: 'This field is required',

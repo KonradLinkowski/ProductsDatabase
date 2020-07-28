@@ -1,35 +1,49 @@
-$thumbnail-size: 100px;
+$card-width: 300px;
 
 .product {
-  margin: 10px;
-  display: grid;
-  grid-template-columns: $thumbnail-size auto 100px 100px;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "thumbnail name edit price"
-    "thumbnail description edit price";
+  width: $card-width;
 
-  gap: 10px;
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
 
-  &__name {
-    grid-area: name;
+    ::ng-deep .mat-card-header-text {
+      margin: 0;
+    }
+  
+    .header__name {
+      margin-bottom: 0;
+    }
+
+    .header__price {
+      margin: 5px 0 5px auto;
+      font-size: 0.9rem;
+    }
   }
 
-  &__thumbnail {
-    grid-area: thumbnail;
-    width: $thumbnail-size;
-    height: $thumbnail-size;
+  &__image {
+    width: $card-width;
+    height: $card-width;
   }
+  
+  &__variants {
+    position: relative;
 
-  &__price {
-    grid-area: price;
+    .variant {
+      display: flex;
+      justify-content: space-between;
+    }
   }
-
-  &__description {
-    grid-area: description;
+  
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
   }
 
   &__edit {
-    grid-area: edit;
+    margin-right: 10px;
   }
 }

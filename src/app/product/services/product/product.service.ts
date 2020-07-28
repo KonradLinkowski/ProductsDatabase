@@ -28,4 +28,8 @@ export class ProductService {
   createProduct(product: Partial<Product>): Observable<string> {
     return defer(() => from(this.firestore.collection(this.collectionName).add(product)).pipe(map(ref => ref.id)));
   }
+
+  deleteProduct(id: string) {
+    return defer(() => from(this.firestore.collection(this.collectionName).doc<Product>(id).delete()));
+  }
 }
