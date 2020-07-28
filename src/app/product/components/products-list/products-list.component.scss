@@ -1,5 +1,7 @@
 .search-bar {
-  width: 100%;
+  display: flex;
+  margin: 10px;
+  flex: 1;
   display: flex;
 
   &__input {
@@ -15,7 +17,9 @@
 }
 
 .products-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 10px;
 }

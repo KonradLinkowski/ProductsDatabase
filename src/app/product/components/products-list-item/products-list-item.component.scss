@@ -2,10 +2,13 @@ $thumbnail-size: 100px;
 
 .product {
   width: 300px;
-  margin: 10px;
 
   .mat-card-actions {
     display: flex;
     justify-content: flex-end;
+
+    * {
+      margin-left: 10px;
+    }
   }
 }

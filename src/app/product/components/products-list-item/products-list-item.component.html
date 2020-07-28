@@ -2,15 +2,31 @@
   <mat-card-header>
     <mat-card-title>{{ product.name }}</mat-card-title>
     <span class="product__price app-center">
-      <span>${{ priceMin | number: '1.2-2' }}</span>
-      <span *ngIf="priceMax"> - ${{ priceMax | number: '1.2-2' }}</span>
+      <span>${{ priceMin | number: "1.2-2" }}</span>
+      <span *ngIf="priceMax"> - ${{ priceMax | number: "1.2-2" }}</span>
     </span>
   </mat-card-header>
-  <img mat-card-image [src]="product.thumbnail || 'https://via.placeholder.com/150'" alt="Product thumbnail">
+  <img
+    mat-card-image
+    [src]="product.thumbnail || 'https://via.placeholder.com/150'"
+    alt="Product thumbnail"
+  />
   <mat-card-content>
     <p>{{ product.description }}</p>
   </mat-card-content>
-  <mat-card-actions *ngIf="!readonly">
-    <a mat-flat-button color="accent" class="product__edit" [routerLink]="['/edit-product', product.id]">Edit</a>
+  <mat-card-actions>
+    <a
+      *ngIf="!readonly"
+      mat-flat-button
+      color="accent"
+      class="product__edit"
+      [routerLink]="['/edit-product', product.id]"
+    >Edit</a>
+    <a
+      mat-flat-button
+      color="primary"
+      class="product__edit"
+      [routerLink]="['/product', product.id]"
+    >See more</a>
   </mat-card-actions>
 </mat-card>
