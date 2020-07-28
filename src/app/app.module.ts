@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { LayoutModule } from '@angular/cdk/layout';
 import { environment } from '../environments/environment';
 import { SharedModule } from 'src/shared/shared.module';
@@ -31,6 +32,7 @@ import { SharedModule } from 'src/shared/shared.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     ProductModule,
     AuthModule,
     AppCommonModule,
