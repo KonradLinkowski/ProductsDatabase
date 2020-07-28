@@ -3,6 +3,7 @@ import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialog, ConfirmDialogData } from 'src/shared/components/confirm/confirm.dialog';
+import { UploadImageDialog, UploadImageDialogData } from 'src/shared/components/upload-image/upload-image.dialog';
 
 @Component({
   selector: 'app-products-list-item',
@@ -29,6 +30,16 @@ export class ProductsListItemComponent {
       if (result) {
         this.productService.deleteProduct(this.product.id).subscribe();
       }
+    });
+  }
+
+  openUploadDialog() {
+    const data: UploadImageDialogData = {
+      productId: this.product.id
+    };
+
+    this.matDialog.open(UploadImageDialog, {
+      data
     });
   }
 

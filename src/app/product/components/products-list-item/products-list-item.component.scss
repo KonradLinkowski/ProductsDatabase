@@ -27,6 +27,32 @@ $card-width: 300px;
   &__image {
     width: $card-width;
     height: $card-width;
+    position: relative;
+    background-image: "assets/img/thumbnail.png";
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $card-width;
+    height: $card-width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.6);
+
+      &::after {
+        font-size: 2rem;
+        content: "Upload thumbnail"
+      }
+    }
   }
   
   &__variants {

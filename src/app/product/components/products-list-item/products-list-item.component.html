@@ -6,20 +6,17 @@
       <span *ngIf="priceMax"> - ${{ priceMax | number: "1.2-2" }}</span>
     </span>
   </mat-card-header>
-  <img
-    *ngIf="product.thumbnail"
+  <div
     class="product__image"
     mat-card-image
-    [src]="product.thumbnail"
-    alt="Product thumbnail"
-  />
-  <img
-    *ngIf="!product.thumbnail"
-    class="product__image"
-    mat-card-image
-    src="assets/img/thumbnail.png"
-    alt="Product thumbnail"
-  />
+    [style.backgroundImage]="'url(' + (product.thumbnail ? product.thumbnail?.downloadURL : 'assets/img/thumbnail.png') + ')'"
+    >
+    <div
+      *ngIf="!readonly"
+      class="product__image-overlay"
+      (click)="openUploadDialog()"
+    ></div>
+  </div>
   <mat-card-content>
     <p class="product__description">{{ product.description }}</p>
     <mat-accordion>

@@ -7132,6 +7132,13 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
+ngx-material-file-input@1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-material-file-input/-/ngx-material-file-input-1.1.1.tgz#836201cbb8a312d749776c65327b3f4652bc0d61"
+  integrity sha512-rYhBPAr7EZca6RoFWKcceV4Y4V2xH8SPAgrA/bCXgKbS/tJ+h/e9UW3jIPMWVOR/u/rbNhzuXVTuTMfSgS3klw==
+  dependencies:
+    tslib "^1.9.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

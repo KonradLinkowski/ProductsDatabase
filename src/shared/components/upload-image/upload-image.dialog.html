@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Upload thumbnail</h1>
+<div mat-dialog-content>
+  <form class="form" [formGroup]="form" id="form" (submit)="startUpload()">
+    <mat-form-field>
+      <mat-label>Thumbnail</mat-label>
+      <ngx-mat-file-input accept="image/*" formControlName="thumbnail"></ngx-mat-file-input>
+      <mat-icon matSuffix>folder</mat-icon>
+    </mat-form-field>
+  </form>
+  <div *ngIf="percentage | async as pct">
+    <progress [value]="pct" max="100"></progress>
+    {{ pct | number }}%
+  </div>
+</div>
+<div class="actions" mat-dialog-actions>
+  <button [disabled]="isLoading" mat-flat-button [mat-dialog-close]="false">
+    Cancel
+  </button>
+  <button
+    [disabled]="isLoading"
+    mat-flat-button
+    color="primary"
+    type="submit"
+    form="form"
+  >Submit</button>
+</div>

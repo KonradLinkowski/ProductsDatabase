@@ -11,11 +11,6 @@
     <input matInput type="text" formControlName="description" />
     <mat-error>{{ getError("description") }}</mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Thumbnail</mat-label>
-    <input matInput type="text" formControlName="thumbnail" />
-    <mat-error>{{ getError("thumbnail") }}</mat-error>
-  </mat-form-field>
   <fieldset class="product-form__variants" formArrayName="variants">
     <legend>Variants</legend>
     <div
