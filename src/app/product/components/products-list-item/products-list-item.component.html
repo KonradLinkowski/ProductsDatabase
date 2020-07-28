@@ -2,8 +2,8 @@
   <mat-card-header class="product__header">
     <mat-card-title class="header__name">{{ product.name }}</mat-card-title>
     <span class="header__price">
-      <span>${{ priceMin | number: "1.2-2" }}</span>
-      <span *ngIf="priceMax"> - ${{ priceMax | number: "1.2-2" }}</span>
+      <span>{{ priceMin | currency:'USD':'symbol':'1.2-2' }}</span>
+      <span *ngIf="priceMax"> - {{ priceMax | currency:'USD':'symbol':'1.2-2' }}</span>
     </span>
   </mat-card-header>
   <div
@@ -30,7 +30,7 @@
         <div class="product__variants">
           <p class="variant" *ngFor="let variant of product.variants; let lastItem = last">
             <span class="variant__name">{{ variant.name }}</span>
-            <span class="variant__price">${{ variant.price }}</span>
+            <span class="variant__price">${{ variant.price | currency:'USD':'symbol':'1.2-2' }}</span>
           </p>
         </div>
       </mat-expansion-panel>
