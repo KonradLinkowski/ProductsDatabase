@@ -110,6 +110,8 @@ THE SOFTWARE.
 
 @angular/material/menu
 
+@angular/material/progress-bar
+
 @angular/material/radio
 
 @angular/material/toolbar
