@@ -4,7 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UploadImageDialog } from './components/upload-image/upload-image.dialog';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatIconModule } from '@angular/material';
+import { MatFormFieldModule, MatIconModule, MatProgressBarModule } from '@angular/material';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +17,8 @@ import { CommonModule } from '@angular/common';
     MatDialogModule,
     MatButtonModule,
     MaterialFileInputModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
   ],
   entryComponents: [ConfirmDialog, UploadImageDialog]
 })

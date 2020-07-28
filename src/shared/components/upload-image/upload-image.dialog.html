@@ -8,7 +8,7 @@
     </mat-form-field>
   </form>
   <div *ngIf="percentage | async as pct">
-    <progress [value]="pct" max="100"></progress>
+    <mat-progress-bar mode="determinate"  color="primary" [value]="pct"></mat-progress-bar>
     {{ pct | number }}%
   </div>
 </div>
