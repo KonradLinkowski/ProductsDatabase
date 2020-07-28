@@ -1,10 +1,16 @@
-<div *ngIf="product" class="product">
-  <img class="product__thumbnail" [src]="product.thumbnail || 'https://via.placeholder.com/150'">
-  <span class="product__name">{{ product.name }}</span>
-  <p class="product__description">{{ product.description }}</p>
-  <span class="product__price app-center">
-    <span>${{ priceMin | number: '1.2-2' }}</span>
-    <span *ngIf="priceMax"> - ${{ priceMax | number: '1.2-2' }}</span>
-  </span>
-  <a *ngIf="!readonly" class="product__edit app-center" [routerLink]="['/edit-product', product.id]">Edit</a>
-</div>
+<mat-card *ngIf="product" class="product">
+  <mat-card-header>
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <span class="product__price app-center">
+      <span>${{ priceMin | number: '1.2-2' }}</span>
+      <span *ngIf="priceMax"> - ${{ priceMax | number: '1.2-2' }}</span>
+    </span>
+  </mat-card-header>
+  <img mat-card-image [src]="product.thumbnail || 'https://via.placeholder.com/150'" alt="Product thumbnail">
+  <mat-card-content>
+    <p>{{ product.description }}</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!readonly">
+    <a mat-flat-button color="accent" class="product__edit" [routerLink]="['/edit-product', product.id]">Edit</a>
+  </mat-card-actions>
+</mat-card>

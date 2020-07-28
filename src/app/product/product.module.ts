@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ProductsPageComponent } from '../products-page/products-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatButtonModule,
     MatChipsModule,
     MatIconModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule
   ],
   providers: [
     ProductService
