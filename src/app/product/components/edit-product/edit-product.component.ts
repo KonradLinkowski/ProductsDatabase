@@ -42,7 +42,6 @@ export class EditProductComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl(product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
       description: new FormControl(product.description, [Validators.maxLength(256)]),
-      thumbnail: new FormControl(product.thumbnail),
       variants: new FormArray(variants, [Validators.required])
     });
   }
@@ -58,7 +57,7 @@ export class EditProductComponent implements OnInit {
   createVariant(name: string = null, price: number = null): FormGroup {
     return new FormGroup({
       name: new FormControl(name, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      price: new FormControl(price, [Validators.required, Validators.min(0)])
+      price: new FormControl(price, [Validators.required, Validators.min(0), Validators.max(99999.99)])
     });
   }
 
