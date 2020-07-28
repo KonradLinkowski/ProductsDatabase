@@ -69,6 +69,7 @@ export class EditProductComponent implements OnInit {
   submit() {
     if (this.product) {
       this.productService.updateProduct(this.product.id, this.form.value).subscribe();
+      this.router.navigate(['/']);
     } else {
       this.productService.createProduct(this.form.value).subscribe(id => {
         this.router.navigate(['/edit-product', id]);

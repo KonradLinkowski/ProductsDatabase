@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product/product.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialog, ConfirmDialogData } from 'src/shared/components/products-page/confirm.dialog';
+import { ConfirmDialog, ConfirmDialogData } from 'src/shared/components/confirm/confirm.dialog';
 
 @Component({
   selector: 'app-products-list-item',

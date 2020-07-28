@@ -1,4 +1,4 @@
-<form [formGroup]="form" *ngIf="loaded" class="product-form">
+<form [formGroup]="form" *ngIf="loaded" (submit)="submit()" class="product-form">
   <h2 *ngIf="!product">Add a new product</h2>
   <h2 *ngIf="product">Edit a product</h2>
   <mat-form-field>
@@ -33,15 +33,15 @@
         <input matInput appNumberInput formControlName="price" />
         <mat-error>{{ getError("variants." + i + ".price") }}</mat-error>
       </mat-form-field>
-      <button mat-icon-button (click)="removeVariant(i)">
+      <button type="button" mat-icon-button (click)="removeVariant(i)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
-    <button mat-flat-button (click)="addVariant()">Add a new variant</button>
+    <button type="button" mat-flat-button (click)="addVariant()">Add a new variant</button>
   </fieldset>
   <button
     class="product-form__apply"
-    (click)="submit()"
+    type="submit"
     mat-flat-button
     color="primary"
     [disabled]="form.invalid"

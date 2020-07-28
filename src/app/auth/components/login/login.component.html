@@ -10,6 +10,6 @@
       <input matInput type="password" formControlName="password" autocomplete="on">
       <mat-error>{{ getError('password') }}</mat-error>
     </mat-form-field>
-    <button color="primary" mat-flat-button [disabled]="form.invalid">Login</button>
+    <button type="submit" color="primary" mat-flat-button [disabled]="form.invalid">Login</button>
   </form>
 </div>

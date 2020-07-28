@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
-import { AdminModule } from './admin/admin.module';
 import { AppCommonModule } from './common/app-common.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,7 +33,6 @@ import { SharedModule } from 'src/shared/shared.module';
     AngularFireAuthModule,
     ProductModule,
     AuthModule,
-    AdminModule,
     AppCommonModule,
     MatToolbarModule,
     MatIconModule,
