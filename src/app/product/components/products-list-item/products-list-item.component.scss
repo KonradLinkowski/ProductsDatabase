@@ -1,14 +1,49 @@
-$thumbnail-size: 100px;
+$card-width: 300px;
 
 .product {
-  width: 300px;
+  width: $card-width;
 
-  .mat-card-actions {
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+
+    ::ng-deep .mat-card-header-text {
+      margin: 0;
+    }
+  
+    .header__name {
+      margin-bottom: 0;
+    }
+
+    .header__price {
+      margin: 5px 0 5px auto;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__image {
+    width: $card-width;
+    height: $card-width;
+  }
+  
+  &__variants {
+    position: relative;
+
+    .variant {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  
+  &__actions {
     display: flex;
     justify-content: flex-end;
+  }
 
-    * {
-      margin-left: 10px;
-    }
+  &__edit {
+    margin-right: 10px;
   }
 }

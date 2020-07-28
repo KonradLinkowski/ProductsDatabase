@@ -1,32 +1,56 @@
 <mat-card *ngIf="product" class="product">
-  <mat-card-header>
-    <mat-card-title>{{ product.name }}</mat-card-title>
-    <span class="product__price app-center">
+  <mat-card-header class="product__header">
+    <mat-card-title class="header__name">{{ product.name }}</mat-card-title>
+    <span class="header__price">
       <span>${{ priceMin | number: "1.2-2" }}</span>
       <span *ngIf="priceMax"> - ${{ priceMax | number: "1.2-2" }}</span>
     </span>
   </mat-card-header>
   <img
+    *ngIf="product.thumbnail"
+    class="product__image"
     mat-card-image
-    [src]="product.thumbnail || 'https://via.placeholder.com/150'"
+    [src]="product.thumbnail"
+    alt="Product thumbnail"
+  />
+  <img
+    *ngIf="!product.thumbnail"
+    class="product__image"
+    mat-card-image
+    src="assets/img/thumbnail.png"
     alt="Product thumbnail"
   />
   <mat-card-content>
-    <p>{{ product.description }}</p>
+    <p class="product__description">{{ product.description }}</p>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="isOpen = true"
+                           (closed)="isOpen = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Variants
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="product__variants">
+          <p class="variant" *ngFor="let variant of product.variants; let lastItem = last">
+            <span class="variant__name">{{ variant.name }}</span>
+            <span class="variant__price">${{ variant.price }}</span>
+          </p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-content>
-  <mat-card-actions>
-    <a
-      *ngIf="!readonly"
-      mat-flat-button
-      color="accent"
-      class="product__edit"
-      [routerLink]="['/edit-product', product.id]"
-    >Edit</a>
+  <mat-card-actions class="product__actions" *ngIf="!readonly">
     <a
       mat-flat-button
       color="primary"
       class="product__edit"
-      [routerLink]="['/product', product.id]"
-    >See more</a>
+      [routerLink]="['/edit-product', product.id]"
+    >Edit</a>
+    <button
+      mat-flat-button
+      color="warn"  
+      class="product__delete"
+      (click)="openDeleteDialog()"
+    >Delete</button>
   </mat-card-actions>
 </mat-card>

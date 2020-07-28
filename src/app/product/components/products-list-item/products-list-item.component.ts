@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../models/product.model';
+import { ProductService } from '../../services/product/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialog, ConfirmDialogData } from 'src/shared/components/products-page/confirm.dialog';
 
 @Component({
   selector: 'app-products-list-item',
@@ -9,6 +12,25 @@ import { Product } from '../../models/product.model';
 export class ProductsListItemComponent {
   @Input() product: Product;
   @Input() readonly = true;
+  isOpen = false;
+
+  constructor(private productService: ProductService, private matDialog: MatDialog) {}
+
+  openDeleteDialog() {
+    const data: ConfirmDialogData = {
+      title: 'Delete product',
+      description: 'Do you want to delete this product?'
+    };
+
+    const ref = this.matDialog.open(ConfirmDialog, {
+      data
+    });
+    ref.afterClosed().subscribe(result => {
+      if (result) {
+        this.productService.deleteProduct(this.product.id).subscribe();
+      }
+    });
+  }
 
   get priceMin(): number {
     if (this.product.variants.length === 1) {
