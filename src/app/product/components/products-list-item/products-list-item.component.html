@@ -30,7 +30,7 @@
         <div class="product__variants">
           <p class="variant" *ngFor="let variant of product.variants; let lastItem = last">
             <span class="variant__name">{{ variant.name }}</span>
-            <span class="variant__price">${{ variant.price | currency:'USD':'symbol':'1.2-2' }}</span>
+            <span class="variant__price">{{ variant.price | currency:'USD':'symbol':'1.2-2' }}</span>
           </p>
         </div>
       </mat-expansion-panel>
