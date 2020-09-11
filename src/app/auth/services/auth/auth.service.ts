@@ -10,6 +10,18 @@ export class AuthService {
 
   constructor(private router: Router, private fireAuth: AngularFireAuth) {}
 
+  register(email: string, password: string): Observable<auth.UserCredential> {
+    return defer(() =>
+      from(
+        this.fireAuth.auth
+          .setPersistence(auth.Auth.Persistence.LOCAL)
+          .then(() =>
+            this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
+          )
+      )
+    );
+  }
+
   login(email: string, password: string): Observable<auth.UserCredential> {
     return defer(() =>
       from(

@@ -53,6 +53,16 @@
       <span>Login</span>
     </button>
     <button
+      *ngIf="!isLoggedIn"
+      mat-flat-button
+      class="navbar__login"
+      aria-label="Example icon-button with share icon"
+      (click)="goToRegister()"
+    >
+      <mat-icon>account_circle</mat-icon>
+      <span>Register</span>
+    </button>
+    <button
       *ngIf="isLoggedIn"
       mat-flat-button
       class="navbar__login"

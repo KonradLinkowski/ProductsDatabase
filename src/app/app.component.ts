@@ -27,6 +27,10 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+
   logout() {
     this.authService.logout().subscribe();
   }
